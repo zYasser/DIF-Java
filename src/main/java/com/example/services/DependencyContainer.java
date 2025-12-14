@@ -1,24 +1,57 @@
 package com.example.services;
 
-import java.util.List;
-
 import com.example.exceptions.AlreadyInitializedException;
 import com.example.models.ServiceDetails;
 
-public interface DependencyContainer {
+import java.util.List;
 
-    void init(List<ServiceDetails<?>> services, ObjectInstantiationService objectInstantiationService)
-            throws AlreadyInitializedException;
+public class DependencyContainer implements IDependencyContainer
+{
 
-    <T> void reload(ServiceDetails<T> serviceDetails , boolean reloadDependantServices); 
+	@Override
+	public void init(List<ServiceDetails<?>> services, ObjectInstantiationService objectInstantiationService)
+			throws AlreadyInitializedException {
 
-    <T> T reload(T service);
-    <T> T reload(T service , boolean reloadDependantServices);
-    <T> T get(Class<T> serviceType);
-    <T> ServiceDetails<T> getServiceDetails(Class<T> serviceType);
-    <T> void registerService(Class<T> serviceType, ServiceDetails<T> serviceDetails);
-    List<ServiceDetails<?>> getServicesDetails();
-    List<Object> getServices();
-    
-    
+
+	}
+
+	@Override
+	public <T> void reload(ServiceDetails<T> serviceDetails, boolean reloadDependantServices) {
+
+	}
+
+	@Override
+	public <T> T reload(T service) {
+		return null;
+	}
+
+	@Override
+	public <T> T reload(T service, boolean reloadDependantServices) {
+		return null;
+	}
+
+	@Override
+	public <T> T get(Class<T> serviceType) {
+		return null;
+	}
+
+	@Override
+	public <T> ServiceDetails<T> getServiceDetails(Class<T> serviceType) {
+		return null;
+	}
+
+	@Override
+	public <T> void registerService(Class<T> serviceType, ServiceDetails<T> serviceDetails) {
+
+	}
+
+	@Override
+	public List<ServiceDetails<?>> getServicesDetails() {
+		return List.of();
+	}
+
+	@Override
+	public List<Object> getServices() {
+		return List.of();
+	}
 }
