@@ -1,5 +1,6 @@
 package com.example.services;
 
+import java.lang.annotation.Annotation;
 import java.util.List;
 
 import com.example.exceptions.AlreadyInitializedException;
@@ -14,11 +15,12 @@ public interface IDependencyContainer {
 
     <T> T reload(T service);
     <T> T reload(T service , boolean reloadDependantServices);
-    <T> T get(Class<T> serviceType);
+    <T> T getService(Class<T> serviceType);
     <T> ServiceDetails<T> getServiceDetails(Class<T> serviceType);
     <T> void registerService(Class<T> serviceType, ServiceDetails<T> serviceDetails);
     List<ServiceDetails<?>> getServicesDetails();
     List<Object> getServices();
+    List<ServiceDetails<?>> getServiceByAnnotation(Class<? extends Annotation> annotationType);
     
     
 }
