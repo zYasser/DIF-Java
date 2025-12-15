@@ -12,7 +12,7 @@ DIF provides a simple yet powerful way to manage dependencies and lifecycle in J
 - **Automatic Discovery**: Scans JAR files or directories to find annotated services
 - **Dependency Injection**: Constructor-based injection with automatic resolution
 - **Lifecycle Management**: Supports initialization and cleanup hooks
-- **Configuration System**: Flexible configuration through fluent API
+- **Configuration wem**: Flexible configuration through fluent API
 - **Startup Execution**: Automatic execution of startup methods
 
 ## Quick Usage

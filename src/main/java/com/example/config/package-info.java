@@ -40,7 +40,7 @@
  * <h2>Integration Points</h2>
  * <p>The configuration is used by:</p>
  * <ul>
- *   <li>{@link com.example.Main} - Application entry point</li>
+ *   <li>{@link com.example.DIF} - Application entry point</li>
  *   <li>{@link com.example.services.ServicesScanningServiceImpl} - Service discovery</li>
  *   <li>{@link com.example.services.ServicesInstantiationService} - Dependency resolution</li>
  * </ul>
@@ -57,6 +57,7 @@
  * @since 1.0
  */
 package com.example.config;
+
 
 
 

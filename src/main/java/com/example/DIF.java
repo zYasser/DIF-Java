@@ -5,25 +5,27 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Set;
 
-import com.example.annotations.Service;
 import com.example.annotations.Startup;
 import com.example.config.DIFConfig;
 import com.example.enums.DirectoryType;
 import com.example.models.Directory;
 import com.example.models.ServiceDetails;
-import com.example.services.*;
-import com.example.tests.TestService1;
-import com.example.tests.TestService2;
+import com.example.services.ClassLocator;
+import com.example.services.ClassLocatorDirectory;
+import com.example.services.ClassLocatorJar;
+import com.example.services.DependencyContainer;
+import com.example.services.DirectoryResolverImpl;
+import com.example.services.IDependencyContainer;
+import com.example.services.ObjectInstantiationService;
+import com.example.services.ServicesInstantiationService;
+import com.example.services.ServicesScanningService;
+import com.example.services.ServicesScanningServiceImpl;
 
-@Service
-public class Main {
-	public static final IDependencyContainer dependencyContainer;
+public class DIF
+{
+	public static final DependencyContainer dependencyContainer;
 	static {
 		dependencyContainer = new DependencyContainer();
-	}
-
-	public static void main(String[] args) {
-		run(Main.class);
 	}
 
 	public static void run(Class<?> clazz) {
@@ -59,18 +61,8 @@ public class Main {
 		List<ServiceDetails<?>> instantiatedServices = servicesInstantiationService
 				.instantiateServicesAndBean(mappedClasses);
 
-		for (ServiceDetails<?> instantiatedService : instantiatedServices) {
-			System.out.println("instantiatedService = " + instantiatedService.getServiceType().getTypeName());
-		}
 		dependencyContainer.init(instantiatedServices, objectInstantiationService);
 		runStartUpMethod(startUpClass);
-	}
-
-	@Startup
-	private void StartUpFunction() {
-		System.out.println("Should be last function");
-		dependencyContainer.reload(dependencyContainer.getService(TestService1.class) , true);
-
 	}
 
 	private static void runStartUpMethod(Class<?> startUpClass) {
